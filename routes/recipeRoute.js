@@ -18,7 +18,7 @@ router.get('/', (req, res, next) => {
 // =-=--=-==-=-Create recipe -=--==--=-==--==-
 router.get('/new', (req, res, next) => {
   if (!req.user) {
-    req.flash('error', 'sorry you must be logged in to donate a Movie')
+    req.flash('error', 'sorry you must be logged in to create a recipe')
     res.redirect('/login');
   } else {
     Recipe.find()
@@ -32,12 +32,10 @@ router.get('/new', (req, res, next) => {
 });
 
 router.post('/recipes/create', (req, res, next) => {
-  // instead of doing title: req.body.title and decription: req.body.description
-  // we just take the entire req.body and make a Movie out of it
+
   const newRecipe = req.body;
   newRecipe.author = req.user._id;
-  // newMovie.donor = req.user._id;
-  // since req.user is available in every route, its very easy to attach the current users id to any new thing youre creating or editing
+ 
   Recipe.create(newRecipe)
     .then(() => {
       res.redirect('/recipes');
@@ -54,35 +52,21 @@ router.post('/recipes/create', (req, res, next) => {
 
 
 router.get('/:_id/edit', (req, res, next) => {
-  let canEdit = false;
   Recipe.findById(req.params._id)
     .then((theRecipe) => {
-      if (req.user) {
-        // console.log("--------- ", theRecipe.author._id);
-        // console.log("=========", req.user._id);
-        if (String(theRecipe.author._id) == String(req.user._id)) {
-          canEdit = true;
-        }
-      }
-      data = {
-        theRecipe: theRecipe,
-        canEdit: canEdit
-      };
-      res.render('RecipesFolder/recipeDetails',data)
+      res.render('RecipesFolder/editRecipe', {theRecipe: theRecipe})
     })
     .catch((err) => {
       next(err);
     })
 });
 
-router.post('/:id/update', (req, res, next) => {
+router.post('/:_id/update', (req, res, next) => {
 
-  //req.body is an object with the exact perfect structure of a Movie
-  // this is a coicidence becase we gave our inputs name= the same keys that our Movie model has
-
-  Recipe.findByIdAndUpdate(req.params.id, req.body)
+  Recipe.findByIdAndUpdate(req.params._id, req.body)
     .then(() => {
-      res.redirect('/Recipes/' + req.params.id);
+      // console.log("-=-==--=-=-=-==-"+theRecipe)
+      res.redirect("/recipes/" + req.params._id);
     })
     .catch((err) => {
       next(err)

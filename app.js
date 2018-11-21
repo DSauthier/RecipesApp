@@ -113,5 +113,8 @@ app.use("/", user);
 const recipe = require("./routes/recipeRoute");
 app.use("/recipes", recipe);
 
+const recipeBook = require("./routes/recipeBookRoute");
+app.use("/recipeBook", recipeBook);
+
 
 module.exports = app;

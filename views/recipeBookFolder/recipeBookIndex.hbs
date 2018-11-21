@@ -1,0 +1,15 @@
+
+
+<h1>hello recipe Books</h1>
+
+
+
+{{#each allBooks}}
+
+<h1>{{this.name}}</h1>
+<a href="recipeBook/{{this._id}}"><button>See Details</button></a>
+
+{{/each}}
+
+<a href="/recipeBook/new">Create new Recipe Book</a>
+

@@ -24,8 +24,8 @@
   <form action="{{theRecipe._id}}/delete" method="POST">
     <button>Delete This Recipe</button>
   </form>
-  <form action="{{theRecipe._id}}/edit" method="POST">
-    <button>Edit This Recipe</button>
-  </form>
+  {{!-- <form action="{{theRecipe._id}}/edit" method="GET"> --}}
+    <a href="{{theRecipe._id}}/edit"><button>Edit This Recipe</button></a>
+  {{!-- </form> --}}
 {{/if}}
 

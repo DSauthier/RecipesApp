@@ -11,6 +11,7 @@ const RecipeSchema = new Schema({
   directions: String,
   time: Number,
   image: String,
+  cuisine:{ type: String, enum: ['Carnivore','Vegetarian','Vegan',"Seafood","Poultry","All Purpose","Basics"] },
   author: { type: Schema.Types.ObjectId, ref: 'User' }
 },
    {

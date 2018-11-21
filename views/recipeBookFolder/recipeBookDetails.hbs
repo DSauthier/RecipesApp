@@ -1,0 +1,21 @@
+<h1>
+  {{theRecipeBook.name}}
+
+</h1>
+
+<h2> Creator: {{theRecipeBook.author.username}}</h2>
+
+<h2>
+  Recipes: {{theRecipeBook.recipes}}
+</h2>
+
+
+
+{{#if canDelete}}
+<form action="{{theRecipeBook._id}}/delete" method="POST">
+  <button>Delete This Recipe</button>
+</form>
+{{!-- <form action="{{theRecipeBook._id}}/edit" method="GET"> --}}
+  <a href="{{theRecipeBook._id}}/edit"><button>Edit This Recipe</button></a>
+  {{!-- </form> --}}
+{{/if}}
