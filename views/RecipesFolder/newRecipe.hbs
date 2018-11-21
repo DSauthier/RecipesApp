@@ -1,0 +1,21 @@
+<h1>Crete New recipe here</h1>
+
+<form action="recipes/create" method="POST">
+<label for="name">Recipe Name: </label>
+<input type="text" name="name" required>
+<br>
+<label for="ingredients">Ingredients : </label>
+<input type="text" name="ingredients" required>
+<br>
+<label for="directions">Directions :</label>
+<textarea name="directions" id="" cols="200" rows="20"></textarea>
+<br>
+<label for="time">Time to Make : </label>
+<input type="number" name="time" required> Minutes
+<br>
+
+<button type="submit">Submit</button>
+
+{{!-- author: { type: Schema.Types.ObjectId, ref: 'User' } --}}
+    {{!-- image: String, --}}
+</form>

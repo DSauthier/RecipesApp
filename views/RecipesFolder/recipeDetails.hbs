@@ -1,0 +1,31 @@
+
+
+<h1>
+  {{theRecipe.name}}
+
+</h1>
+
+<h2> Creator: {{theRecipe.author.username}}</h2>
+
+<h2>
+ Ingredients: {{theRecipe.ingredients}}
+</h2>
+
+
+<h3>
+ Directions :  {{theRecipe.directions}}
+</h3>
+
+<h4>
+ Time to make: {{theRecipe.time}} Minutes</h4>
+
+
+{{#if canDelete}}
+  <form action="{{theRecipe._id}}/delete" method="POST">
+    <button>Delete This Recipe</button>
+  </form>
+  <form action="{{theRecipe._id}}/edit" method="POST">
+    <button>Edit This Recipe</button>
+  </form>
+{{/if}}
+

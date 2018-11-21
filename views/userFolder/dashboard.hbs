@@ -1,0 +1,11 @@
+Private page
+{{#if user}}
+<h1>Welcome {{user.username}}</h1>
+<div>
+  <a href="/">Index</a>
+  <a href="/logout">Logout</a>
+  <a href="/recipes">Recipes</a>
+</div>
+{{else}}
+Please <a href="/login">Login</a>
+{{/if}}
